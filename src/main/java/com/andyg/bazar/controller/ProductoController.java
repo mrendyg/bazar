@@ -7,11 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/producto")
 public class ProductoController {
+
+    @Autowired
+    private ProductoRepository productoRepository;
 
     @Autowired
     private ProductoService productoService;
@@ -45,6 +49,13 @@ public class ProductoController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteProducto(@PathVariable Long id){
         productoService.deletesProducto(id);
+    }
+
+    //BUSQUEDA DE PRODUCTOS QUE 5 O MENOS STOCK
+    @GetMapping("/list/stock_bajo")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ProductoEntity> getBajoStock(){
+        return productoService.getStockBajo();
     }
 
 }

@@ -20,8 +20,7 @@ public class ProductoEntity {
 
     private String nombre;
     private String marca;
-    private double precio;
+    private int precio;
     private int stock;
-
 
 }
