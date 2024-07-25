@@ -6,7 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -21,10 +22,10 @@ public class VentaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate fecha_venta;
+    private LocalDateTime fecha_venta;
     private int total;
 
-    @ManyToOne  // La relación con Cliente debe ser ManyToOne
+    @ManyToOne
     @JoinColumn(name = "cliente_id")
     private ClienteEntity cliente;
 
